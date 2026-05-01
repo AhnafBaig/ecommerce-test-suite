@@ -1,21 +1,11 @@
 # E-Commerce Test Automation Suite
 
-<<<<<<< HEAD
-A BDD test automation framework covering **UI** and **REST API** layers using Playwright, pytest-bdd, and Gherkin.
-
-![Test Status](https://github.com/YOUR_USERNAME/ecommerce-test-suite/actions/workflows/tests.yml/badge.svg)
-
----
-
-## Structure
-=======
 A BDD test automation framework covering UI and REST API layers using Playwright, pytest-bdd, and Gherkin.
 ![Test Status](https://github.com/AhnafBaig/ecommerce-test-suite/actions/workflows/tests.yml/badge.svg)
 
 ---
 
 ## Architecture Overview
->>>>>>> bf49666f809e9e6f245af7823cda6dc6b7124277
 
 ```
 ecommerce-test-suite/
@@ -35,16 +25,6 @@ ecommerce-test-suite/
 
 ## Tech Stack
 
-<<<<<<< HEAD
-| Layer       | Tool                 |
-|-------------|----------------------|
-| Language    | Python 3.12          |
-| UI Testing  | Playwright           |
-| BDD         | pytest-bdd + Gherkin |
-| API Testing | Requests             |
-| Reports     | pytest-html          |
-| CI/CD       | GitHub Actions       |
-=======
 | Layer       | Tool                   |
 |-------------|------------------------|
 | Language    | Python 3.12            |
@@ -54,7 +34,6 @@ ecommerce-test-suite/
 | Runner      | pytest                 |
 | Reports     | pytest-html            |
 | CI/CD       | GitHub Actions         |
->>>>>>> bf49666f809e9e6f245af7823cda6dc6b7124277
 
 ---
 
@@ -71,11 +50,6 @@ pip install -r requirements.txt
 playwright install chromium
 ```
 
-<<<<<<< HEAD
----
-
-=======
->>>>>>> bf49666f809e9e6f245af7823cda6dc6b7124277
 ## Running Tests
 
 ```bash
@@ -89,15 +63,6 @@ Reports are saved to `reports/report.html` after every run.
 
 ---
 
-<<<<<<< HEAD
-## CI/CD
-
-| Trigger             | What runs                  |
-|---------------------|----------------------------|
-| Push / PR           | Smoke suite (API)          |
-| Schedule (2 AM UTC) | Full regression (UI + API) |
-| Manual dispatch     | Choose: all, ui, or api    |
-=======
 ## CI/CD Pipeline
 
 | Trigger              | What runs                        |
@@ -105,23 +70,14 @@ Reports are saved to `reports/report.html` after every run.
 | Push / Pull Request  | Smoke suite (API tests only)     |
 | Schedule (2 AM UTC)  | Full regression (UI + API)       |
 | Manual dispatch      | Choose: `all`, `ui`, or `api`    |
->>>>>>> bf49666f809e9e6f245af7823cda6dc6b7124277
 
 Add secrets under **Repo → Settings → Secrets → Actions**: `STANDARD_USER`, `PASSWORD`
 
 ---
 
-<<<<<<< HEAD
-## Targets
-
-| Layer | App |
-|-------|-----|
-| UI    | [SauceDemo](https://www.saucedemo.com) |
-=======
 ## Targets Under Test
 
 | Layer | Application                                     |
 |-------|-------------------------------------------------|
 | UI    | [SauceDemo](https://www.saucedemo.com)          |
->>>>>>> bf49666f809e9e6f245af7823cda6dc6b7124277
 | API   | [JSONPlaceholder](https://jsonplaceholder.typicode.com) |

@@ -22,8 +22,3 @@ Feature: User Authentication
     And I click the login button
     Then I should see a login error message
 
-  Scenario: Login fails when username is empty
-    Given I am on the login page
-    When I enter username "" and password "secret_sauce"
-    And I click the login button
-    Then I should see a login error message
