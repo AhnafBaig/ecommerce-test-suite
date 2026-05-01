@@ -1,7 +1,7 @@
 # E-Commerce Test Automation Suite
 
 A BDD test automation framework covering UI and REST API layers using Playwright, pytest-bdd, and Gherkin.
-![Test Status](https://github.com/YOUR_USERNAME/ecommerce-test-suite/actions/workflows/tests.yml/badge.svg)
+![Test Status](https://github.com/AhnafBaig/ecommerce-test-suite/actions/workflows/tests.yml/badge.svg)
 
 ---
 
