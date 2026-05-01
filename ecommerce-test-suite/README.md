@@ -1,4 +1,4 @@
-# 🧪 E-Commerce Test Automation Suite
+# E-Commerce Test Automation Suite
 
 A production-quality BDD test automation framework covering **UI** and **REST API** layers,
 built to demonstrate QA engineering skills for roles requiring Playwright, Selenium, Cucumber,
@@ -8,7 +8,7 @@ CI/CD pipelines, and test management practices.
 
 ---
 
-## 🏗️ Architecture Overview
+## Architecture Overview
 
 ```
 ecommerce-test-suite/
@@ -53,7 +53,7 @@ ecommerce-test-suite/
 
 ---
 
-## ⚙️ Tech Stack
+## Tech Stack
 
 | Layer       | Tool / Library         | Purpose                              |
 |-------------|------------------------|--------------------------------------|
@@ -67,7 +67,7 @@ ecommerce-test-suite/
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Clone the repository
 ```bash
@@ -96,7 +96,7 @@ cp .env .env.local
 
 ---
 
-## ▶️ Running Tests
+## Running Tests
 
 ### Run all tests
 ```bash
@@ -125,7 +125,7 @@ HEADLESS=false SLOW_MO=500 pytest tests/ui/ -v
 
 ---
 
-## 📊 Test Reports
+## Test Reports
 
 After any test run, an HTML report is generated at:
 ```
@@ -135,7 +135,7 @@ Open it in any browser. It includes pass/fail status, duration, and full stack t
 
 ---
 
-## 🔁 CI/CD Pipeline
+## CI/CD Pipeline
 
 The GitHub Actions pipeline (`.github/workflows/tests.yml`) runs automatically:
 
@@ -156,7 +156,7 @@ Add:
 
 ---
 
-## 🧩 Design Patterns
+## Design Patterns
 
 ### Page Object Model (POM)
 All UI interactions are encapsulated in `pages/`. Tests never reference selectors directly — this means a single selector change only needs to be updated in one place.
@@ -171,7 +171,7 @@ Feature file (WHAT to test)  →  Step definitions (HOW in plain Python)  →  P
 
 ---
 
-## 🐛 Defect Tracking
+## Defect Tracking
 
 Bugs found during test runs are tracked as **GitHub Issues** with the following labels:
 - `bug` — confirmed defect
@@ -182,7 +182,7 @@ Each issue links back to the failing test scenario for full traceability.
 
 ---
 
-## 📚 Targets Under Test
+## Targets Under Test
 
 | Layer | Application                                     |
 |-------|-------------------------------------------------|
