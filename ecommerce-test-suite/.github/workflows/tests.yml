@@ -1,0 +1,114 @@
+name: QA Test Suite
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+  schedule:
+    # Full regression every night at 2 AM UTC
+    - cron: "0 2 * * *"
+  workflow_dispatch:
+    inputs:
+      test_scope:
+        description: "Which tests to run"
+        required: true
+        default: "all"
+        type: choice
+        options:
+          - all
+          - ui
+          - api
+
+jobs:
+  # -------------------------------------------------------------------------
+  # Smoke Tests — run fast on every push/PR
+  # -------------------------------------------------------------------------
+  smoke:
+    name: Smoke Tests
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' || github.event_name == 'pull_request'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Install Playwright browsers
+        run: |
+          playwright install chromium --with-deps
+
+      - name: Run smoke tests (API only — fast)
+        run: |
+          pytest tests/api/ -v \
+            --html=reports/smoke-report.html \
+            --self-contained-html \
+            -k "not slow"
+        env:
+          HEADLESS: "true"
+
+      - name: Upload smoke test report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: smoke-test-report
+          path: reports/smoke-report.html
+
+  # -------------------------------------------------------------------------
+  # Full Regression — UI + API, runs nightly or on workflow_dispatch
+  # -------------------------------------------------------------------------
+  regression:
+    name: Full Regression Suite
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name == 'schedule' ||
+      github.event_name == 'workflow_dispatch'
+
+    strategy:
+      fail-fast: false
+      matrix:
+        test_group: [ui, api]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Install Playwright browsers
+        run: |
+          playwright install chromium --with-deps
+
+      - name: Run ${{ matrix.test_group }} tests
+        run: |
+          pytest tests/${{ matrix.test_group }}/ -v \
+            --html=reports/${{ matrix.test_group }}-report.html \
+            --self-contained-html
+        env:
+          HEADLESS: "true"
+          STANDARD_USER: ${{ secrets.STANDARD_USER }}
+          PASSWORD: ${{ secrets.PASSWORD }}
+
+      - name: Upload ${{ matrix.test_group }} test report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.test_group }}-regression-report
+          path: reports/${{ matrix.test_group }}-report.html
