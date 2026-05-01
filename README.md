@@ -1,11 +1,12 @@
 # E-Commerce Test Automation Suite
 
-A BDD test automation framework covering UI and REST API layers using Playwright, pytest-bdd, and Gherkin.
+A BDD test automation framework covering **UI** and **REST API** layers using Playwright, pytest-bdd, and Gherkin.
+
 ![Test Status](https://github.com/AhnafBaig/ecommerce-test-suite/actions/workflows/tests.yml/badge.svg)
 
 ---
 
-## Architecture Overview
+## Structure
 
 ```
 ecommerce-test-suite/
@@ -25,22 +26,21 @@ ecommerce-test-suite/
 
 ## Tech Stack
 
-| Layer       | Tool                   |
-|-------------|------------------------|
-| Language    | Python 3.12            |
-| UI Testing  | Playwright             |
-| BDD         | pytest-bdd + Gherkin   |
-| API Testing | Requests               |
-| Runner      | pytest                 |
-| Reports     | pytest-html            |
-| CI/CD       | GitHub Actions         |
+| Layer       | Tool                 |
+|-------------|----------------------|
+| Language    | Python 3.12          |
+| UI Testing  | Playwright           |
+| BDD         | pytest-bdd + Gherkin |
+| API Testing | Requests             |
+| Reports     | pytest-html          |
+| CI/CD       | GitHub Actions       |
 
 ---
 
 ## Quick Start
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/ecommerce-test-suite.git
+git clone https://github.com/AhnafBaig/ecommerce-test-suite.git
 cd ecommerce-test-suite
 
 python -m venv venv
@@ -49,6 +49,8 @@ source venv/bin/activate        # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 playwright install chromium
 ```
+
+---
 
 ## Running Tests
 
@@ -63,21 +65,21 @@ Reports are saved to `reports/report.html` after every run.
 
 ---
 
-## CI/CD Pipeline
+## CI/CD
 
-| Trigger              | What runs                        |
-|----------------------|----------------------------------|
-| Push / Pull Request  | Smoke suite (API tests only)     |
-| Schedule (2 AM UTC)  | Full regression (UI + API)       |
-| Manual dispatch      | Choose: `all`, `ui`, or `api`    |
+| Trigger             | What runs                  |
+|---------------------|----------------------------|
+| Push / PR           | Smoke suite (API)          |
+| Schedule (2 AM UTC) | Full regression (UI + API) |
+| Manual dispatch     | Choose: all, ui, or api    |
 
 Add secrets under **Repo → Settings → Secrets → Actions**: `STANDARD_USER`, `PASSWORD`
 
 ---
 
-## Targets Under Test
+## Targets
 
-| Layer | Application                                     |
-|-------|-------------------------------------------------|
-| UI    | [SauceDemo](https://www.saucedemo.com)          |
+| Layer | App |
+|-------|-----|
+| UI    | [SauceDemo](https://www.saucedemo.com) |
 | API   | [JSONPlaceholder](https://jsonplaceholder.typicode.com) |
